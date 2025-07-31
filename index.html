@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUX MindTech - Official Developer Website</title>
+    <title>RUX MindTech - Wellness & Mental Health Apps</title>
     <style>
         * {
             margin: 0;
@@ -32,51 +32,99 @@
         }
         
         .header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+        
+        .header .tagline {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-style: italic;
         }
         
         .content {
             background: white;
-            border-radius: 15px;
-            padding: 40px;
+            border-radius: 20px;
+            padding: 50px;
             margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         .section h2 {
             color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2rem;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+            text-align: center;
         }
         
-        .app-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .vision-section {
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+            padding: 40px;
+            border-radius: 15px;
             margin: 30px 0;
         }
         
+        .vision-section h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .app-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
         .app-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f2ff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
         }
         
         .app-card h3 {
             color: #667eea;
             margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .app-card .status {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .app-card .coming-soon {
+            background: #ffc107;
+            color: #333;
         }
         
         .features {
@@ -91,38 +139,63 @@
         }
         
         .features li:before {
-            content: "✓";
+            content: "✨";
             position: absolute;
             left: 0;
-            color: #28a745;
-            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .tech-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .tech-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+        }
+        
+        .tech-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .tech-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
         }
         
         .contact {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 40px;
+            border-radius: 20px;
             text-align: center;
         }
         
         .contact h3 {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
         }
         
         .contact-email {
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
             display: inline-block;
+            backdrop-filter: blur(10px);
         }
         
         .contact-email a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
         
         .contact-email a:hover {
@@ -131,19 +204,19 @@
         
         .footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             color: white;
-            opacity: 0.8;
+            opacity: 0.9;
         }
         
         .footer-links {
-            margin-top: 15px;
+            margin-top: 20px;
         }
         
         .footer-links a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 20px;
             opacity: 0.8;
             transition: opacity 0.3s;
         }
@@ -155,11 +228,11 @@
         
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .content {
-                padding: 20px;
+                padding: 30px 20px;
             }
             
             .footer-links a {
@@ -173,21 +246,23 @@
     <div class="container">
         <div class="header">
             <h1>RUX MindTech</h1>
-            <p>Empowering Personal Growth Through AI-Powered Reflection</p>
+            <p>Empowering Wellness Through AI-Powered Mental & Physical Health</p>
+            <p class="tagline">Where technology meets healing, one app at a time</p>
         </div>
         
         <div class="content">
-            <div class="section">
-                <h2>About RUX</h2>
-                <p>RUX is an innovative mobile application designed to help users explore their thoughts, emotions, and personal growth journey through guided reflection and AI-powered insights. Our mission is to create a safe, supportive space for authentic self-discovery and meaningful progress.</p>
+            <div class="vision-section">
+                <h3>Our Vision</h3>
+                <p>We believe that true wellness encompasses both mind and body. Through cutting-edge AI technology and evidence-based approaches, we're creating a series of apps that support your journey to holistic health. From mental clarity to physical vitality, we're here to guide you every step of the way.</p>
             </div>
             
             <div class="section">
-                <h2>Our App</h2>
-                <div class="app-info">
+                <h2>Our Wellness Series</h2>
+                <div class="app-showcase">
                     <div class="app-card">
+                        <div class="status">Available Now</div>
                         <h3>RUX - Grow Smarter Every Day</h3>
-                        <p>A comprehensive personal growth platform that combines journaling, goal tracking, and AI-powered coaching to help users achieve authentic balance and meaningful progress in their lives.</p>
+                        <p>Your AI-powered companion for personal growth and mental wellness. Through guided reflection, goal tracking, and intelligent insights, RUX helps you navigate life's challenges with clarity and purpose.</p>
                         <ul class="features">
                             <li>AI-Powered Reflection & Coaching</li>
                             <li>Personalized Goal Tracking</li>
@@ -198,42 +273,72 @@
                     </div>
                     
                     <div class="app-card">
-                        <h3>Key Features</h3>
+                        <div class="status coming-soon">Coming Soon</div>
+                        <h3>Hydrate - Smart Water Tracking</h3>
+                        <p>Revolutionary hydration tracking that goes beyond simple reminders. Using AI to understand your lifestyle, activity levels, and health goals to provide personalized hydration guidance.</p>
                         <ul class="features">
-                            <li>Intelligent Conversation Interface</li>
-                            <li>Customizable Goal Management</li>
-                            <li>Privacy-First Design</li>
-                            <li>Cross-Platform Synchronization</li>
-                            <li>Regular Progress Tracking</li>
-                            <li>Community Support Features</li>
+                            <li>AI-Powered Hydration Recommendations</li>
+                            <li>Smart Reminders Based on Activity</li>
+                            <li>Health Goal Integration</li>
+                            <li>Progress Visualization</li>
+                            <li>Wellness Insights</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
             <div class="section">
-                <h2>Our Mission</h2>
-                <p>At RUX MindTech, we believe that everyone deserves access to tools that support their personal growth and well-being. Our AI-powered platform is designed to be your trusted companion on your journey to self-discovery, helping you navigate challenges, celebrate progress, and embrace authentic growth.</p>
+                <h2>Technology Meets Wellness</h2>
+                <div class="tech-highlights">
+                    <div class="tech-item">
+                        <div class="icon">🧠</div>
+                        <h4>AI-Powered Insights</h4>
+                        <p>Advanced machine learning algorithms provide personalized recommendations and insights based on your unique patterns and goals.</p>
+                    </div>
+                    
+                    <div class="tech-item">
+                        <div class="icon">🔒</div>
+                        <h4>Privacy-First Design</h4>
+                        <p>Your data is sacred. We implement the highest security standards to ensure your personal information remains private and secure.</p>
+                    </div>
+                    
+                    <div class="tech-item">
+                        <div class="icon">📊</div>
+                        <h4>Evidence-Based Approach</h4>
+                        <p>All our features are grounded in scientific research and best practices in mental health and wellness.</p>
+                    </div>
+                    
+                    <div class="tech-item">
+                        <div class="icon">🌍</div>
+                        <h4>Global Accessibility</h4>
+                        <p>Designed for users worldwide, with support for multiple languages and cultural considerations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Our Commitment</h2>
+                <p>We're committed to creating technology that genuinely improves lives. Every feature, every interaction, and every piece of advice is designed with your wellbeing in mind. We believe that technology should be a force for healing, growth, and positive change.</p>
             </div>
             
             <div class="section">
                 <h2>Privacy & Trust</h2>
-                <p>We are committed to protecting your privacy and ensuring the security of your personal data. Our platform is built with privacy-first principles, giving you full control over your information while providing a safe space for honest reflection and growth.</p>
-                <p><strong>Learn more about how we protect your data:</strong> <a href="https://github.com/launchlogic88/privacy-policy" target="_blank" style="color: #667eea; text-decoration: none;">View Privacy Policy</a></p>
+                <p>Your privacy and trust are fundamental to everything we do. We implement rigorous data protection measures and maintain complete transparency about how your information is used. Your journey to wellness should be safe, secure, and completely under your control.</p>
+                <p><strong>Learn more about our commitment to your privacy:</strong> <a href="https://github.com/launchlogic88/privacy-policy" target="_blank" style="color: #667eea; text-decoration: none;">View Privacy Policy</a></p>
             </div>
         </div>
         
         <div class="contact">
-            <h3>Get in Touch</h3>
-            <p>Have questions or feedback? We'd love to hear from you!</p>
+            <h3>Join Our Wellness Journey</h3>
+            <p>Have questions, feedback, or want to share your wellness journey? We'd love to hear from you!</p>
             <div class="contact-email">
-                <a href="mailto:louis.pesilan@gmail.com?subject=RUX App Feedback&body=Hello,%0D%0A%0D%0AI would like to share my feedback about the RUX app.%0D%0A%0D%0A[Please describe your feedback here]%0D%0A%0D%0ABest regards,">📧 louis.pesilan@gmail.com</a>
+                <a href="mailto:louis.pesilan@gmail.com?subject=Wellness App Feedback&body=Hello RUX MindTech Team,%0D%0A%0D%0AI would like to share my feedback about your wellness app.%0D%0A%0D%0A[Please describe your experience and feedback here]%0D%0A%0D%0ABest regards,">📧 louis.pesilan@gmail.com</a>
             </div>
-            <p><small>Click the email above to send us a message directly</small></p>
+            <p><small>Click the email above to connect with our wellness team</small></p>
         </div>
         
         <div class="footer">
-            <p>&copy; 2025 RUX MindTech. All rights reserved.</p>
+            <p>&copy; 2025 RUX MindTech. Empowering wellness through technology.</p>
             <div class="footer-links">
                 <a href="https://github.com/launchlogic88/privacy-policy" target="_blank">Privacy Policy</a>
                 <a href="https://launchlogic88.github.io/rux-mindtech.github.io/app-ads.txt" target="_blank">AdMob Verification</a>

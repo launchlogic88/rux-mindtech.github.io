@@ -110,11 +110,47 @@
             margin-bottom: 15px;
         }
         
+        .contact-email {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .contact-email a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .contact-email a:hover {
+            text-decoration: underline;
+        }
+        
         .footer {
             text-align: center;
             padding: 20px;
             color: white;
             opacity: 0.8;
+        }
+        
+        .footer-links {
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
@@ -124,6 +160,11 @@
             
             .content {
                 padding: 20px;
+            }
+            
+            .footer-links a {
+                display: block;
+                margin: 10px 0;
             }
         }
     </style>
@@ -163,7 +204,7 @@
                             <li>Customizable Goal Management</li>
                             <li>Privacy-First Design</li>
                             <li>Cross-Platform Synchronization</li>
-                            <li>Regular Progress Reports</li>
+                            <li>Regular Progress Tracking</li>
                             <li>Community Support Features</li>
                         </ul>
                     </div>
@@ -178,17 +219,25 @@
             <div class="section">
                 <h2>Privacy & Trust</h2>
                 <p>We are committed to protecting your privacy and ensuring the security of your personal data. Our platform is built with privacy-first principles, giving you full control over your information while providing a safe space for honest reflection and growth.</p>
+                <p><strong>Learn more about how we protect your data:</strong> <a href="https://github.com/launchlogic88/privacy-policy" target="_blank" style="color: #667eea; text-decoration: none;">View Privacy Policy</a></p>
             </div>
         </div>
         
         <div class="contact">
             <h3>Get in Touch</h3>
             <p>Have questions or feedback? We'd love to hear from you!</p>
-            <p>Email: support@ruxai.org</p>
+            <div class="contact-email">
+                <a href="mailto:louis.pesilan@gmail.com?subject=RUX App Feedback&body=Hello,%0D%0A%0D%0AI would like to share my feedback about the RUX app.%0D%0A%0D%0A[Please describe your feedback here]%0D%0A%0D%0ABest regards,">📧 louis.pesilan@gmail.com</a>
+            </div>
+            <p><small>Click the email above to send us a message directly</small></p>
         </div>
         
         <div class="footer">
             <p>&copy; 2025 RUX MindTech. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/launchlogic88/privacy-policy" target="_blank">Privacy Policy</a>
+                <a href="https://launchlogic88.github.io/rux-mindtech.github.io/app-ads.txt" target="_blank">AdMob Verification</a>
+            </div>
         </div>
     </div>
 </body>

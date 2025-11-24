@@ -3,87 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launch Logic - Mobile Apps</title>
+    <title>RUX MindTech - Empowering Wellness Through Technology</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', 'Poppins', sans-serif;
         }
+        /* Psychology-based color scheme: Purple for trust, wisdom, wellness */
         .hero-gradient {
-            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             position: relative;
             overflow: hidden;
         }
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
         .cta-button {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
         .cta-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
         .cta-button.google-play {
-             box-shadow: 0 4px 15px 0 rgba(255, 122, 90, 0.35);
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
         }
         .cta-button.google-play:hover {
-             box-shadow: 0 6px 20px 0 rgba(255, 122, 90, 0.45);
+            box-shadow: 0 12px 28px rgba(255, 107, 53, 0.5);
         }
-         .cta-button.youtube {
-             box-shadow: 0 4px 15px 0 rgba(255, 0, 0, 0.35);
+        .cta-button.youtube {
+            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
         }
         .cta-button.youtube:hover {
-             box-shadow: 0 6px 20px 0 rgba(255, 0, 0, 0.45);
+            box-shadow: 0 12px 28px rgba(255, 0, 0, 0.5);
         }
         .feature-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            border: 1px solid rgba(102, 126, 234, 0.1);
         }
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
         }
         .app-card {
             text-decoration: none;
             color: inherit;
+            display: block;
         }
         .app-card:hover {
             text-decoration: none;
         }
-        /* Bubbles animation */
+        .app-card .card-inner {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .app-card:hover .card-inner {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+        }
+        /* Enhanced bubbles animation for wellness theme */
         .bubble {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            animation: rise 15s infinite ease-in;
+            backdrop-filter: blur(10px);
+            animation: rise 20s infinite ease-in-out;
             z-index: 1;
         }
-        .bubble:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 8s; }
-        .bubble:nth-child(2) { width: 20px; height: 20px; left: 20%; animation-duration: 5s; animation-delay: 1s; }
-        .bubble:nth-child(3) { width: 50px; height: 50px; left: 35%; animation-duration: 7s; animation-delay: 2s; }
-        .bubble:nth-child(4) { width: 80px; height: 80px; left: 50%; animation-duration: 11s; animation-delay: 0s; }
-        .bubble:nth-child(5) { width: 35px; height: 35px; left: 65%; animation-duration: 6s; animation-delay: 1s; }
-        .bubble:nth-child(6) { width: 45px; height: 45px; left: 80%; animation-duration: 8s; animation-delay: 3s; }
-        .bubble:nth-child(7) { width: 25px; height: 25px; left: 90%; animation-duration: 6s; animation-delay: 2s; }
+        .bubble:nth-child(1) { width: 60px; height: 60px; left: 10%; animation-duration: 12s; }
+        .bubble:nth-child(2) { width: 30px; height: 30px; left: 20%; animation-duration: 8s; animation-delay: 1s; }
+        .bubble:nth-child(3) { width: 80px; height: 80px; left: 35%; animation-duration: 15s; animation-delay: 2s; }
+        .bubble:nth-child(4) { width: 100px; height: 100px; left: 50%; animation-duration: 18s; animation-delay: 0s; }
+        .bubble:nth-child(5) { width: 45px; height: 45px; left: 65%; animation-duration: 10s; animation-delay: 1.5s; }
+        .bubble:nth-child(6) { width: 70px; height: 70px; left: 80%; animation-duration: 14s; animation-delay: 3s; }
+        .bubble:nth-child(7) { width: 35px; height: 35px; left: 90%; animation-duration: 9s; animation-delay: 2.5s; }
 
         @keyframes rise {
-            0% { bottom: -100px; transform: translateX(0); }
-            50% { transform: translateX(50px); }
-            100% { bottom: 1080px; transform: translateX(-50px); }
+            0% { 
+                bottom: -100px; 
+                transform: translateX(0) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            50% { 
+                transform: translateX(30px) scale(1);
+            }
+            100% { 
+                bottom: 120vh; 
+                transform: translateX(-30px) scale(1.2);
+                opacity: 0.3;
+            }
         }
 
-        /* Custom scroll animations */
+        /* Enhanced scroll animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Phone mockup styling */
+        .phone-mockup {
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3));
+        }
+        
         /* Aspect Ratio for embedded video */
         .aspect-video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
         .aspect-video-container iframe {
             position: absolute;
@@ -92,64 +158,95 @@
             width: 100%;
             height: 100%;
         }
+        
+        /* Trust-building elements */
+        .trust-badge {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            backdrop-filter: blur(10px);
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-gradient-to-b from-slate-50 to-purple-50 text-slate-800">
 
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm">
+    <header class="bg-white/90 backdrop-blur-xl fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-purple-100">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"></path><path d="M12 12 a2 2 0 0 0 0 4 a2 2 0 0 0 0 -4z"></path></svg>
-                <h1 class="text-2xl font-bold text-slate-900">Launch Logic</h1>
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">RUX MindTech</h1>
+                    <p class="text-xs text-slate-500 -mt-1">Empowering Wellness</p>
+                </div>
             </div>
-            <a href="#apps" class="hidden md:inline-block bg-sky-400 text-white font-semibold px-5 py-2 rounded-full hover:bg-sky-500 transition-colors">View Apps</a>
+            <a href="#apps" class="hidden md:inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold px-6 py-2.5 rounded-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                View Apps
+            </a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-gradient pt-32 pb-20">
+        <section class="hero-gradient pt-32 pb-24 relative">
             <div class="absolute inset-0 z-0">
                 <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
                 <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
             </div>
             <div class="container mx-auto px-6 text-center relative z-10">
-                <div class="max-w-3xl mx-auto">
-                    <span class="inline-block bg-sky-100 text-sky-600 font-semibold px-4 py-1 rounded-full text-sm mb-4 reveal">Welcome to Launch Logic</span>
-                    <h2 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight reveal" style="transition-delay: 100ms;">Transform Your Life <br><span class="text-sky-500">One App at a Time</span></h2>
-                    <p class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">Discover our collection of innovative mobile apps designed to help you build better habits, stay focused, and live a healthier, more productive life.</p>
+                <div class="max-w-4xl mx-auto">
+                    <span class="inline-block trust-badge text-purple-100 font-semibold px-5 py-2 rounded-full text-sm mb-6 reveal backdrop-blur-md">
+                        ✨ Empowering Wellness Through Technology
+                    </span>
+                    <h2 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight reveal" style="transition-delay: 100ms; text-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                        Transform Your Life<br>
+                        <span class="bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent">One App at a Time</span>
+                    </h2>
+                    <p class="text-xl text-purple-100 mb-10 max-w-2xl mx-auto leading-relaxed reveal" style="transition-delay: 200ms;">
+                        Discover our collection of innovative mobile apps designed to help you build better habits, stay focused, and live a healthier, more productive life.
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- Apps Section -->
-        <section id="apps" class="py-20">
+        <section id="apps" class="py-24 -mt-12 relative z-20">
             <div class="container mx-auto px-6">
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 reveal">Our Apps</h2>
-                    <p class="text-slate-600 mt-4 reveal" style="transition-delay: 100ms;">Click on any app to download from Google Play Store</p>
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 reveal">Our Wellness Apps</h2>
+                    <p class="text-lg text-slate-600 mt-4 reveal" style="transition-delay: 100ms;">
+                        Click on any app to download from Google Play Store. Each app is designed with your wellbeing in mind.
+                    </p>
                 </div>
                 
                 <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     <!-- HydroTrack App -->
                     <a href="https://play.google.com/store/apps/details?id=com.hydrotrack.hydrotrack&pli=1" target="_blank" class="app-card group">
-                        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div class="bg-gradient-to-br from-sky-400 to-blue-500 p-8 text-center">
-                                <div class="mb-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
-                                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"></path>
-                                        <path d="M12 12 a2 2 0 0 0 0 4 a2 2 0 0 0 0 -4z"></path>
-                                    </svg>
+                        <div class="card-inner bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden h-full">
+                            <div class="bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600 p-10 text-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                                <div class="relative z-10 mb-4">
+                                    <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"></path>
+                                            <path d="M12 12 a2 2 0 0 0 0 4 a2 2 0 0 0 0 -4z"></path>
+                                        </svg>
+                                    </div>
                                 </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">HydroTrack</h3>
-                                <p class="text-blue-100 text-sm">Your Hydration Companion</p>
+                                <h3 class="text-3xl font-bold text-white mb-2 relative z-10">HydroTrack</h3>
+                                <p class="text-blue-100 text-sm font-medium relative z-10">Your Hydration Companion</p>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 mb-4">Transform the chore of staying hydrated into a delightful journey. Your personal companion visually reflects your hydration health, cheering you on every step of the way!</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-semibold text-sky-500">Available Now</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-500 group-hover:translate-x-1 transition-transform">
+                            <div class="p-8">
+                                <p class="text-slate-600 mb-6 leading-relaxed">
+                                    Transform the chore of staying hydrated into a delightful journey. Your personal companion visually reflects your hydration health, cheering you on every step of the way!
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                                    <span class="text-sm font-bold text-cyan-600">Available Now</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-600 group-hover:translate-x-2 transition-transform duration-300">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -159,21 +256,27 @@
 
                     <!-- Furever Focus App -->
                     <a href="https://play.google.com/store/apps/details?id=com.fureverfocus" target="_blank" class="app-card group">
-                        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div class="bg-gradient-to-br from-purple-400 to-pink-500 p-8 text-center">
-                                <div class="mb-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                                    </svg>
+                        <div class="card-inner bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden h-full">
+                            <div class="bg-gradient-to-br from-purple-500 via-pink-500 to-rose-500 p-10 text-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                                <div class="relative z-10 mb-4">
+                                    <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                    </div>
                                 </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Furever Focus</h3>
-                                <p class="text-pink-100 text-sm">Stay Focused, Stay Productive</p>
+                                <h3 class="text-3xl font-bold text-white mb-2 relative z-10">Furever Focus</h3>
+                                <p class="text-pink-100 text-sm font-medium relative z-10">Stay Focused, Stay Productive</p>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 mb-4">Boost your productivity and maintain focus with Furever Focus. Build better work habits, eliminate distractions, and achieve your goals with our innovative focus tracking system.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-semibold text-purple-500">Available Now</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 group-hover:translate-x-1 transition-transform">
+                            <div class="p-8">
+                                <p class="text-slate-600 mb-6 leading-relaxed">
+                                    Boost your productivity and maintain focus with Furever Focus. Build better work habits, eliminate distractions, and achieve your goals with our innovative focus tracking system.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                                    <span class="text-sm font-bold text-purple-600">Available Now</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600 group-hover:translate-x-2 transition-transform duration-300">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -183,55 +286,64 @@
 
                     <!-- Rux App -->
                     <a href="https://play.google.com/store/apps/details?id=com.rux.grow" target="_blank" class="app-card group">
-                        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div class="bg-gradient-to-br from-green-400 to-emerald-500 p-8 text-center">
-                                <div class="mb-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
-                                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                    </svg>
+                        <div class="card-inner bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden h-full">
+                            <div class="bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 p-10 text-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                                <div class="relative z-10 mb-4">
+                                    <div class="w-20 h-20 mx-auto bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                        </svg>
+                                    </div>
                                 </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Rux</h3>
-                                <p class="text-emerald-100 text-sm">Grow and Thrive</p>
+                                <h3 class="text-3xl font-bold text-white mb-2 relative z-10">Rux</h3>
+                                <p class="text-emerald-100 text-sm font-medium relative z-10">Grow and Thrive</p>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 mb-4">Embark on a journey of personal growth with Rux. Track your progress, set meaningful goals, and watch yourself grow into the best version of you.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-semibold text-green-500">Available Now</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 group-hover:translate-x-1 transition-transform">
+                            <div class="p-8">
+                                <p class="text-slate-600 mb-6 leading-relaxed">
+                                    Embark on a journey of personal growth with Rux. Track your progress, set meaningful goals, and watch yourself grow into the best version of you.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                                    <span class="text-sm font-bold text-emerald-600">Available Now</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-600 group-hover:translate-x-2 transition-transform duration-300">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </a>
                 </div>
             </div>
         </section>
 
         <!-- HydroTrack Detailed Section -->
-        <section class="py-20 bg-slate-50">
+        <section class="py-24 bg-gradient-to-b from-white to-purple-50/30">
             <div class="container mx-auto px-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 reveal">HydroTrack - Your Hydration Companion</h2>
-                        <p class="text-slate-600 mt-4 reveal" style="transition-delay: 100ms;">Transform the chore of staying hydrated into a delightful journey</p>
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 reveal">
+                            HydroTrack - Your Hydration Companion
+                        </h2>
+                        <p class="text-xl text-slate-600 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">
+                            Transform the chore of staying hydrated into a delightful journey
+                        </p>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="grid md:grid-cols-2 gap-16 items-center">
                         <!-- Phone Mockup with Screenshot Carousel -->
                         <div class="reveal">
-                            <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-2xl">
-                                <div class="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
-                                <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
-                                <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
-                                <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
-                                <div class="rounded-[2rem] overflow-hidden w-full h-full bg-white">
+                            <div class="phone-mockup relative mx-auto border-gray-900 bg-gray-900 border-[16px] rounded-[3rem] h-[650px] w-[320px] shadow-2xl">
+                                <div class="w-[160px] h-[24px] bg-gray-900 top-0 rounded-b-[1.5rem] left-1/2 -translate-x-1/2 absolute z-20"></div>
+                                <div class="h-[52px] w-[4px] bg-gray-900 absolute -start-[20px] top-[140px] rounded-s-lg"></div>
+                                <div class="h-[52px] w-[4px] bg-gray-900 absolute -start-[20px] top-[200px] rounded-s-lg"></div>
+                                <div class="h-[72px] w-[4px] bg-gray-900 absolute -end-[20px] top-[160px] rounded-e-lg"></div>
+                                <div class="rounded-[2.5rem] overflow-hidden w-full h-full bg-white">
                                    <div id="screenshot-carousel" class="flex transition-transform duration-700 ease-in-out h-full">
-                                        <img src="progress-screen.png" alt="HydroTrack Progress Screen" class="w-full h-full object-cover flex-shrink-0">
-                                        <img src="game-achievement.png" alt="HydroTrack Game Achievement" class="w-full h-full object-cover flex-shrink-0">
-                                        <img src="hydration-master.png" alt="HydroTrack Hydration Master" class="w-full h-full object-cover flex-shrink-0">
-                                        <img src="pet-companion.png" alt="HydroTrack Pet Companion" class="w-full h-full object-cover flex-shrink-0">
+                                        <img src="progress-screen.png" alt="HydroTrack Progress Screen - Track your daily hydration with beautiful visual progress" class="w-full h-full object-cover flex-shrink-0">
+                                        <img src="game-achievement.png" alt="HydroTrack Game Achievement - Unlock achievements and play fun games" class="w-full h-full object-cover flex-shrink-0">
+                                        <img src="hydration-master.png" alt="HydroTrack Hydration Master - Celebrate your hydration milestones" class="w-full h-full object-cover flex-shrink-0">
+                                        <img src="pet-companion.png" alt="HydroTrack Pet Companion - Your cute companion reflects your hydration health" class="w-full h-full object-cover flex-shrink-0">
                                     </div>
                                 </div>
                             </div>
@@ -240,43 +352,43 @@
                         <!-- Features -->
                         <div class="reveal" style="transition-delay: 200ms;">
                             <div class="space-y-6">
-                                <div class="feature-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
-                                    <div class="flex items-start space-x-4">
-                                        <div class="bg-sky-100 text-sky-500 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                                <div class="feature-card bg-white p-7 rounded-2xl shadow-lg">
+                                    <div class="flex items-start space-x-5">
+                                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 text-cyan-600 w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
                                         </div>
                                         <div>
-                                            <h3 class="font-bold text-lg mb-2 text-slate-900">Emotional Connection</h3>
-                                            <p class="text-slate-600">Watch your companion's mood change based on your intake. A happy companion means a healthy, hydrated you!</p>
+                                            <h3 class="font-bold text-xl mb-2 text-slate-900">Emotional Connection</h3>
+                                            <p class="text-slate-600 leading-relaxed">Watch your companion's mood change based on your intake. A happy companion means a healthy, hydrated you! This visual feedback creates a powerful, positive habit loop.</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="feature-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
-                                    <div class="flex items-start space-x-4">
-                                        <div class="bg-orange-100 text-orange-500 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                                <div class="feature-card bg-white p-7 rounded-2xl shadow-lg">
+                                    <div class="flex items-start space-x-5">
+                                        <div class="bg-gradient-to-br from-orange-100 to-amber-100 text-orange-600 w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
                                         </div>
                                         <div>
-                                            <h3 class="font-bold text-lg mb-2 text-slate-900">Holistic Health Insights</h3>
-                                            <p class="text-slate-600">Go beyond water. Log coffee, juice, or alcohol and get real-time warnings if you're out of balance.</p>
+                                            <h3 class="font-bold text-xl mb-2 text-slate-900">Holistic Health Insights</h3>
+                                            <p class="text-slate-600 leading-relaxed">Go beyond water. Log coffee, juice, or alcohol and get real-time warnings if you're out of balance. Understand your body like never before.</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="feature-card bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
-                                    <div class="flex items-start space-x-4">
-                                        <div class="bg-indigo-100 text-indigo-500 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 15h1.5a2.5 2.5 0 0 1 0 5H4"></path><path d="M19.5 15H18a2.5 2.5 0 0 0 0 5h1.5"></path><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="m2 12 h2"></path><path d="m20 12 h2"></path><path d="m4.93 19.07 1.41-1.41"></path><path d="m17.66 6.34 1.41-1.41"></path></svg>
+                                <div class="feature-card bg-white p-7 rounded-2xl shadow-lg">
+                                    <div class="flex items-start space-x-5">
+                                        <div class="bg-gradient-to-br from-purple-100 to-indigo-100 text-purple-600 w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 15h1.5a2.5 2.5 0 0 1 0 5H4"></path><path d="M19.5 15H18a2.5 2.5 0 0 0 0 5h1.5"></path><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="m2 12 h2"></path><path d="m20 12 h2"></path><path d="m4.93 19.07 1.41-1.41"></path><path d="m17.66 6.34 1.41-1.41"></path></svg>
                                         </div>
                                         <div>
-                                            <h3 class="font-bold text-lg mb-2 text-slate-900">Make It a Game</h3>
-                                            <p class="text-slate-600">Unlock achievements, discover secrets, and customize your companion. Never forget to log your drinks again!</p>
+                                            <h3 class="font-bold text-xl mb-2 text-slate-900">Make It a Game</h3>
+                                            <p class="text-slate-600 leading-relaxed">Unlock achievements, discover secrets, and customize your companion. Our fun features ensure you'll never forget to log your drinks again.</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <a href="https://play.google.com/store/apps/details?id=com.hydrotrack.hydrotrack&pli=1" target="_blank" class="cta-button google-play inline-block bg-orange-500 text-white font-bold text-lg px-8 py-4 rounded-full w-full text-center">
+                                <a href="https://play.google.com/store/apps/details?id=com.hydrotrack.hydrotrack&pli=1" target="_blank" class="cta-button google-play inline-block text-white font-bold text-lg px-10 py-5 rounded-full w-full text-center relative z-10">
                                     Get it on Google Play
                                 </a>
                             </div>
@@ -287,26 +399,28 @@
         </section>
         
         <!-- YouTube Community Section -->
-        <section class="py-20 bg-slate-100">
+        <section class="py-24 bg-gradient-to-br from-slate-100 via-purple-50 to-indigo-50">
             <div class="container mx-auto px-6">
-                <div class="lg:flex lg:items-center lg:space-x-12">
+                <div class="lg:flex lg:items-center lg:space-x-16">
                     <!-- Embedded YouTube Video -->
-                    <div class="lg:w-1/2 w-full mb-8 lg:mb-0 reveal">
-                        <div class="aspect-video-container rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="lg:w-1/2 w-full mb-10 lg:mb-0 reveal">
+                        <div class="aspect-video-container">
                             <iframe src="https://www.youtube.com/embed/CPzf_8aw_8Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                     <!-- Community Text Content -->
                     <div class="lg:w-1/2 w-full text-center lg:text-left reveal" style="transition-delay: 150ms;">
-                        <div class="flex justify-center lg:justify-start mb-4">
-                             <svg class="w-16 h-16" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div class="flex justify-center lg:justify-start mb-6">
+                             <svg class="w-20 h-20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M27.3459 3.12217C27.0202 1.89173 26.0769 0.948398 24.8464 0.62273C22.6809 0.000100231 14 0 14 0C14 0 5.31912 0.000100231 3.15356 0.64311C1.92312 0.968777 0.979788 1.91211 0.654121 3.14255C0.000100231 5.30811 0 10 0 10C0 10 0.000100231 14.6919 0.654121 16.8574C0.979788 18.0879 1.92312 19.0312 3.15356 19.3569C5.31912 20 14 20 14 20C14 20 22.6809 20 24.8464 19.3569C26.0769 19.0312 27.0202 18.0879 27.3459 16.8574C28 14.6919 28 10 28 10C28 10 27.9999 5.30811 27.3459 3.12217Z" fill="#FF0000"/>
                                 <path d="M11.2 14.2857L18.4 10L11.2 5.71428V14.2857Z" fill="white"/>
                             </svg>
                         </div>
-                         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Join our Community!</h2>
-                        <p class="text-slate-600 mt-4 mb-8 max-w-xl mx-auto lg:mx-0">Become part of the HydroTrack family on YouTube! We share fun hydration challenges, health tips, and host weekly giveaways. Let's make staying healthy an exciting adventure together!</p>
-                        <a href="https://www.youtube.com/@HYDROTRACKAPP" target="_blank" class="cta-button youtube inline-block bg-red-600 text-white font-bold text-lg px-10 py-4 rounded-full">
+                         <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Join our Community!</h2>
+                        <p class="text-lg text-slate-600 mt-4 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Become part of the HydroTrack family on YouTube! We share fun hydration challenges, health tips, and host weekly giveaways. Let's make staying healthy an exciting adventure together!
+                        </p>
+                        <a href="https://www.youtube.com/@HYDROTRACKAPP" target="_blank" class="cta-button youtube inline-block text-white font-bold text-lg px-10 py-5 rounded-full relative z-10">
                             Subscribe on YouTube
                         </a>
                     </div>
@@ -317,15 +431,19 @@
     </main>
     
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-10">
+    <footer class="bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 text-slate-300 py-12">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 Launch Logic. Crafted with ❤. All Rights Reserved.</p>
-            <p class="text-sm mt-2">Building apps that make life better, one download at a time.</p>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold text-white mb-2">RUX MindTech</h3>
+                <p class="text-purple-200 text-sm">Empowering Wellness Through Technology</p>
+            </div>
+            <p class="text-sm mb-2">&copy; 2025 RUX MindTech. Crafted with ❤. All Rights Reserved.</p>
+            <p class="text-xs text-slate-400">Building apps that make life better, one download at a time.</p>
         </div>
     </footer>
 
     <script>
-        // Simple scroll reveal animation
+        // Enhanced scroll reveal animation
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -333,12 +451,12 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.15 });
         revealElements.forEach(el => {
             revealObserver.observe(el);
         });
 
-        // Screenshot Carousel Logic
+        // Screenshot Carousel Logic with smooth transitions
         const carousel = document.getElementById('screenshot-carousel');
         if (carousel) {
             const screenshots = carousel.children.length;
@@ -346,10 +464,9 @@
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % screenshots;
                 carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }, 3000); // Change image every 3 seconds
+            }, 3500); // Change image every 3.5 seconds for better viewing
         }
     </script>
 
 </body>
 </html>
-
